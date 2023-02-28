@@ -1,18 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import {Box, Button, Stack, TextField, Typography} from '@mui/material'
 import { exerciseOptions, fetchData } from '../utils/fetchData'
 import HorizontalScrollbar from './HorizontalScrollbar'
+import {Oval} from 'react-loader-spinner'
+import FitnessContext from '../context/FitnessContext'
 
-const SearchExercises = ({setExercises, bodyPart, setBodyPart}) => {
-  const [search, setSearch] = useState('')
-  const [bodyParts, setBodyParts] = useState([])
-  useEffect(()=>{
-    const fetchExerciseData=async()=>{
-      const bodyPartsData= await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions)
-      setBodyParts(['all', ...bodyPartsData]);
-    }
-    fetchExerciseData()
-  },[])
+const SearchExercises = () => {
+const{exercises, setExercises, search, setSearch, isPending}=useContext(FitnessContext)
+
   const handleSearch= async ()=>{
     if(search){
       const exerciseData= await fetchData( 'https://exercisedb.p.rapidapi.com/exercises/', exerciseOptions)
@@ -47,8 +42,25 @@ const SearchExercises = ({setExercises, bodyPart, setBodyPart}) => {
       }} onClick={handleSearch}
         >Search</Button>
       </Box>
+      <Box> 
+    {isPending &&<Oval
+  height={120}
+  width={120}
+  color="#ff2625"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  ariaLabel='oval-loading'
+  secondaryColor="#ff2625"
+  strokeWidth={2}
+  strokeWidthSecondary={2}
+
+/> }
+
+
+      </Box>
       <Box sx={{position:'relative', width:'100%', p:'20px'}} >
-      <HorizontalScrollbar  data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
+      <HorizontalScrollbar/>
       </Box>
     </Stack>
   )
