@@ -26,6 +26,7 @@ const RightArrow = () => {
 };
 const HorizontalScrollbar = () => {
   const{bodyParts}=useContext(FitnessContext)
+  //console.log(bodyParts)
   return (
     <ScrollMenu  LeftArrow={LeftArrow} RightArrow={RightArrow}> 
     <Stack alignItems='center' justifyContent='center'>
@@ -33,7 +34,7 @@ const HorizontalScrollbar = () => {
     {bodyParts.map((item)=>(
     <Box 
     key={item.id || item}
-    itemId={item.id || item}
+    //itemId={item.id || item}
     title={item.id || item}
     m='0 40px'
     >

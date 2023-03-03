@@ -6,17 +6,35 @@ import {Oval} from 'react-loader-spinner'
 import FitnessContext from '../context/FitnessContext'
 
 const SearchExercises = () => {
-const{exercises, setExercises, search, setSearch, isPending}=useContext(FitnessContext)
+const{ setExercises, search, setSearch, isPending}=useContext(FitnessContext)
 
   const handleSearch= async ()=>{
-    if(search){
-      const exerciseData= await fetchData( 'https://exercisedb.p.rapidapi.com/exercises/', exerciseOptions)
-      const searchedExercises=exerciseData.filter((exercise)=> 
-      exercise.name.toLowerCase().includes(search) || exercise.target.toLowerCase().includes(search) || exercise.equipment.toLowerCase().includes(search) || exercise.bodypart.toLowerCase().includes(search))
+    if (search) {
+      const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+
+      const searchedExercises = exercisesData.filter(
+        (item) => item.name.toLowerCase().includes(search)
+               || item.target.toLowerCase().includes(search)
+               || item.equipment.toLowerCase().includes(search)
+               || item.bodyPart.toLowerCase().includes(search),
+      );
       setSearch('')
       setExercises(searchedExercises)
     }
     
+    // if (search) {
+    //   const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+
+    //   const searchedExercises = exercisesData.filter(
+    //     (item) => item.name.toLowerCase().includes(search)
+    //            || item.target.toLowerCase().includes(search)
+    //            || item.equipment.toLowerCase().includes(search)
+    //            || item.bodyPart.toLowerCase().includes(search),
+    //   );
+
+
+
+
   }
   return (
     <Stack alignItems='center' justifyContent='center' mt='37px' p='20px'>
@@ -56,9 +74,7 @@ const{exercises, setExercises, search, setSearch, isPending}=useContext(FitnessC
   strokeWidthSecondary={2}
 
 /> }
-
-
-      </Box>
+    </Box>
       <Box sx={{position:'relative', width:'100%', p:'20px'}} >
       <HorizontalScrollbar/>
       </Box>

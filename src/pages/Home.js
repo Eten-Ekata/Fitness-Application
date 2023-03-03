@@ -7,13 +7,13 @@ import FitnessContext from '../context/FitnessContext'
 const Home = () => {
   // const [exercises, setExercises] = useState([])
   // const[bodyPart, setBodyPart]=useState('all')
-  const{bodyPart, setBodyPart, exercises, setExercises}=useContext(FitnessContext)
+  // const{bodyPart, setBodyPart, exercises, setExercises}=useContext(FitnessContext)
 
   return (
     <Box>
       <HeroBanner />
       <SearchExercises/>
-      <Exercises setExercises={setExercises} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
+      <Exercises />
     </Box>
   )
 }
