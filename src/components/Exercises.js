@@ -3,6 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import {Box, Stack, Typography} from "@mui/material"
 import { fetchData, exerciseOptions } from '../utils/fetchData'
 import FitnessContext from '../context/FitnessContext'
+import ExerciseCard from './ExerciseCard'
 const Exercises = () => {
   const{exercises, bodyParts}=useContext(FitnessContext)
   // console.log(bodyParts)
@@ -11,8 +12,8 @@ const Exercises = () => {
       <Typography variant='h3' mb='46px'> Showing Results</Typography>
       <Stack direction='row' sx={{gap:{lg:'110px', xs:'50px'}}} flexWrap='wrap' justifyContent='center'>
       {exercises.map((exercise, index)=>(
-        <p>{exercise.name}</p>
-      ))}
+        <ExerciseCard key={index} exercise={exercise}/>
+))}
       </Stack>
     </Box>
   )
