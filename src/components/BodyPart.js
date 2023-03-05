@@ -8,6 +8,7 @@ import FitnessContext from '../context/FitnessContext'
 
 const BodyPart = ({item}) => {
   const{bodyPart, setBodyPart}=useContext(FitnessContext)
+  console.log(bodyPart)
   return (
     <Stack type='button' alignItems='center' justifyContent='center' className='bodyPart-card' 
     sx={{
@@ -21,7 +22,7 @@ const BodyPart = ({item}) => {
     }}
     onClick={()=>{
       setBodyPart(item)
-      window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
+      window.scrollTo({ top: 1750, left: 100, behavior: 'smooth' });
 
     }}
     >

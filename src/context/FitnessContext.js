@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { exerciseOptions, fetchData } from '../utils/fetchData'
+import {Oval} from 'react-loader-spinner'
 
 
 const FitnessContext = createContext();
@@ -10,6 +11,7 @@ export const FitnessProvider = ({ children }) => {
     const [search, setSearch] = useState('')
     const [bodyParts, setBodyParts] = useState([])
     const [isPending, setIsPending] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
         const fetchExerciseData=async()=>{
@@ -20,7 +22,8 @@ export const FitnessProvider = ({ children }) => {
         }
         fetchExerciseData()
       },[])
-    
+      
+      
 
 
 
@@ -37,7 +40,10 @@ export const FitnessProvider = ({ children }) => {
             bodyParts,
             setBodyParts,
             isPending,
-            setIsPending
+            setIsPending,
+            loading,
+            setLoading
+          
           }}
         >
           {children}
