@@ -6,7 +6,7 @@ import FitnessContext from '../context/FitnessContext'
 import Spinner from './Spinner'
 
 const SearchExercises = () => {
-const{ setExercises, search, setSearch, isPending}=useContext(FitnessContext)
+const{ setExercises, search, setSearch, isPending, exercises}=useContext(FitnessContext)
 
   const handleSearch= async ()=>{
     if (search) {
@@ -20,7 +20,10 @@ const{ setExercises, search, setSearch, isPending}=useContext(FitnessContext)
       );
       setSearch('')
       setExercises(searchedExercises)
+      console.log('no result found')
+
     }
+    
   }
 
   return (

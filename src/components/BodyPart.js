@@ -8,7 +8,7 @@ import FitnessContext from '../context/FitnessContext'
 
 const BodyPart = ({item}) => {
   const{bodyPart, setBodyPart}=useContext(FitnessContext)
-  console.log(bodyPart)
+  //console.log(bodyPart)
   return (
     <Stack type='button' alignItems='center' justifyContent='center' className='bodyPart-card' 
     sx={{
