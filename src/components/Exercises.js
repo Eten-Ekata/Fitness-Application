@@ -27,7 +27,7 @@ const Exercises = () => {
       if (bodyPart === 'all') {
         setLoading(true)
         exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-        console.log(exercisesData)
+        //console.log(exercisesData)
         setLoading(false)
       } else {
         setLoading(true)

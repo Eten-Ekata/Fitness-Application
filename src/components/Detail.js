@@ -5,6 +5,7 @@ import TargetImg from '../assets/icons/target.png';
 import EquipmentImg from '../assets/icons/equipment.png';
 
 const Detail = ({exerciseDetail}) => {
+  console.log(exerciseDetail)
   const{bodyPart, gifUrl, name, target, equipment}=exerciseDetail
 
   const extraDetail=[
@@ -32,18 +33,18 @@ const Detail = ({exerciseDetail}) => {
         <Typography>
           Exercises keep you strong. {name} {` `} is one of the best exercises to target your {target}. it will help you improve your mood and gain energy. 
         </Typography>
-      </Stack>
-      {exerciseDetail.map((item) =>(
+      {extraDetail.map((item) =>(
         <Stack key={item.name} direction='row' gap='24px' alignItems='center'>
-        <Button>
-          {item.icon}
+        <Button sx={{background:'#fff2db', borderRadius:'50%', width:'100px', height:'100px'}}>
+          <img src={item.icon} alt={bodyPart} style={{width:'50%', height:'50%'}}/>
           </Button>  
-          <Typography variant='h5'>
+          <Typography variant='h5' textTransform='capitalize'>
             {item.name}
           </Typography>
 
         </Stack>
       ))}
+      </Stack>
     </Stack>
   )
 }

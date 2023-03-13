@@ -19,6 +19,7 @@ export const FitnessProvider = ({ children }) => {
           const bodyPartsData= await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions)
           setIsPending(false)
           setBodyParts(['all', ...bodyPartsData]);
+          
         }
         fetchExerciseData()
       },[])
