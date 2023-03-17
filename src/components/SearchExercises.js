@@ -6,7 +6,7 @@ import FitnessContext from '../context/FitnessContext'
 import Spinner from './Spinner'
 
 const SearchExercises = () => {
-const{ setExercises, search, setSearch, isPending, exercises}=useContext(FitnessContext)
+const{ setExercises, search, setSearch, isPending, exercises,bodyParts}=useContext(FitnessContext)
 
   const handleSearch= async ()=>{
     if (search) {
@@ -56,7 +56,7 @@ const{ setExercises, search, setSearch, isPending, exercises}=useContext(Fitness
     </Box>
       
       <Box sx={{position:'relative', width:'100%', p:'20px'}} >
-      <HorizontalScrollbar/>
+      <HorizontalScrollbar body bodyParts={bodyParts}/>
       </Box>
     </Stack>
   )
