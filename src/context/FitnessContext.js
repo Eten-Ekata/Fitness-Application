@@ -1,7 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import { exerciseOptions, fetchData } from '../utils/fetchData'
-import {Oval} from 'react-loader-spinner'
-
 
 const FitnessContext = createContext();
 
@@ -19,17 +17,26 @@ export const FitnessProvider = ({ children }) => {
           const bodyPartsData= await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions)
           setIsPending(false)
           setBodyParts(['all', ...bodyPartsData]);
-          
         }
         fetchExerciseData()
       },[])
       
-      
+      const handleSearch= async ()=>{
+        if (search) {
+          const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+    
+          const searchedExercises = exercisesData.filter(
+            (item) => item.name.toLowerCase().includes(search)
+                   || item.target.toLowerCase().includes(search)
+                   || item.equipment.toLowerCase().includes(search)
+                   || item.bodyPart.toLowerCase().includes(search),
+          );
+          setSearch('')
+          setExercises(searchedExercises)
+        }
+        }
 
-
-
-
-    return (
+  return (
         <FitnessContext.Provider
           value={{
             bodyPart,
@@ -43,7 +50,8 @@ export const FitnessProvider = ({ children }) => {
             isPending,
             setIsPending,
             loading,
-            setLoading
+            setLoading,
+            handleSearch
           
           }}
         >

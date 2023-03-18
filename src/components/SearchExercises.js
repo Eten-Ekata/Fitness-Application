@@ -1,30 +1,11 @@
 import React, {useContext} from 'react'
 import {Box, Button, Stack, TextField, Typography} from '@mui/material'
-import { exerciseOptions, fetchData } from '../utils/fetchData'
 import HorizontalScrollbar from './HorizontalScrollbar'
 import FitnessContext from '../context/FitnessContext'
 import Spinner from './Spinner'
 
 const SearchExercises = () => {
-const{ setExercises, search, setSearch, isPending, exercises,bodyParts}=useContext(FitnessContext)
-
-  const handleSearch= async ()=>{
-    if (search) {
-      const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-
-      const searchedExercises = exercisesData.filter(
-        (item) => item.name.toLowerCase().includes(search)
-               || item.target.toLowerCase().includes(search)
-               || item.equipment.toLowerCase().includes(search)
-               || item.bodyPart.toLowerCase().includes(search),
-      );
-      setSearch('')
-      setExercises(searchedExercises)
-      console.log('no result found')
-
-    }
-    
-  }
+const{ setExercises, search, setSearch, isPending, exercises,bodyParts, handleSearch}=useContext(FitnessContext)
 
   return (
     <Stack alignItems='center' justifyContent='center' mt='37px' p='20px'>

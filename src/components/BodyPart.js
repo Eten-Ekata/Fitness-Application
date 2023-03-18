@@ -2,13 +2,9 @@ import React, { useContext }  from 'react'
 import { Stack, Typography,  } from '@mui/material'
 import Icon from '../assets/icons/gym.png'
 import FitnessContext from '../context/FitnessContext'
-// import FitnessContext from '../context/FitnessContext';
-// const{bodyPart, setBodyPart}=useContext(FitnessContext)
-
 
 const BodyPart = ({item}) => {
   const{bodyPart, setBodyPart}=useContext(FitnessContext)
-  //console.log(bodyPart)
   return (
     <Stack type='button' alignItems='center' justifyContent='center' className='bodyPart-card' 
     sx={{

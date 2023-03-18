@@ -7,8 +7,7 @@ import ExerciseCard from './ExerciseCard'
 import Spinner from './Spinner'
 
 const Exercises = () => {
-  const{exercises, bodyParts, bodyPart, setExercises, loading, setLoading}=useContext(FitnessContext)
-  // console.log(bodyParts)
+  const{exercises, bodyPart, setExercises, loading, setLoading}=useContext(FitnessContext)
   const[currentPage, setCurrentPage] = useState(1)
   const exercisePerPage=9;
   const paginate=(e, value)=>{
@@ -27,7 +26,6 @@ const Exercises = () => {
       if (bodyPart === 'all') {
         setLoading(true)
         exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-        //console.log(exercisesData)
         setLoading(false)
       } else {
         setLoading(true)
