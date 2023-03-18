@@ -7,8 +7,8 @@ const Spinner = () => {
   return (
     <Box>
         <Oval
-      height={120}
-      width={120}
+      height={50}
+      width={50}
       color="#ff2625"
       wrapperStyle={{}}
       wrapperClass=""
